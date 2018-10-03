@@ -1,5 +1,5 @@
 # dic
-Using dict command and autosuggestion, to search words you don't know
+Using dict command and auto suggestion, to search words you want to know
 
 ## Requirements
 Your system can use:
