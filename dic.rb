@@ -3,13 +3,26 @@
 require 'colorize'
 
 def lessdict(word)
-  system "dict #{word}|less"
+  system "dict \"#{word}\"|less"
+end
+
+def sanitize(word)
+  sanitizedword=""
+  word.each_char {|c|
+    sanitizedword << case c
+    when '"'
+      "double quote"
+    else
+      c
+    end
+  }
+  return sanitizedword
 end
 
 if ARGV.empty?
   while true
     print "read".green, "> "
-    word = gets.chop
+    word = sanitize(gets.chop)
     if word.empty?
       exit
     end
@@ -17,4 +30,4 @@ if ARGV.empty?
   end
 end
 
-lessdict ARGV[0]
+lessdict sanitize(ARGV[0])
